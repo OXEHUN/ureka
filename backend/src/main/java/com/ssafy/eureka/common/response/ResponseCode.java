@@ -1,22 +1,3 @@
-package com.ssafy.eureka.common.response;
-
-import jakarta.servlet.http.HttpServletResponse;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import org.springframework.http.HttpStatus;
-
-@AllArgsConstructor
-@Getter
-public enum ResponseCode {
-
-    SUCCESS(HttpStatus.OK.value(), "success"),
-
-    // 유저
-    USER_NOT_FOUND(HttpServletResponse.SC_NOT_FOUND, "유저가 존재하지 않습니다"),
-
-
-    ;
-
-    private final int code;
-    private final String message;
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:b3c9711594348bce6d071f89969db2f20f8c9ca6a0b3ffefde139fc44a5e7cbf
+size 1034
