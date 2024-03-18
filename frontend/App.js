@@ -1,17 +1,3 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import Routers from './src/routers/Routers';
-
-export default function App() {
-  return (
-    <NavigationContainer>
-      <StatusBar />
-      <Routers />
-    </NavigationContainer>
-  );
-}
-
-const styles = StyleSheet.create({
-  
-});
+version https://git-lfs.github.com/spec/v1
+oid sha256:85fa3d39e8aff3174279ef21f0982e2d6f58d9328e04fc813484627eef05b135
+size 772
