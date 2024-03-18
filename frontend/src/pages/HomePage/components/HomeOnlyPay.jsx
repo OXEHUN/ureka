@@ -1,25 +1,3 @@
-import { StyleSheet, View, Text } from "react-native"
-
-function HomeOnlyPay () {
-  return (
-    <View>
-      <View style={styles.midcontainer}>
-        <View>
-          <Text>이번달 유레카 페이 결제 금액</Text>
-          <Text>530,000원</Text>
-        </View>
-        <View>
-          <Text>새 내역 3건</Text>
-        </View>
-      </View>
-    </View>
-  )
-}
-
-export default HomeOnlyPay
-
-const styles = StyleSheet.create({
-  midcontainer: {
-    flexDirection: 'row',
-  }
-})
+version https://git-lfs.github.com/spec/v1
+oid sha256:d225ec17fd75926e6bd4d1a5a89c992062b7d171edbeee624ddb2be144f7fdcd
+size 1295
