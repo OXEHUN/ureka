@@ -1,3 +1,24 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:8232fb1e1901f6d434e54a9a0fc17a35db7cdd80118ce9806cf3db567fcc3248
-size 550
+import { useState, useEffect } from "react"
+import { getPayCard } from "../../../apis/MyCard"
+import { useSelector, useDispatch } from "react-redux"
+
+
+function MyCarousel () {
+  const [ payCardList, setPayCardList ] = useState([])
+
+  useEffect(() => {
+    const response = getPayCard(
+      token,
+      (res) => {
+        setPayCardList(res.data.data.cards)
+      },
+      (err) => console.log(err)
+    )
+  }, [])
+
+  
+
+  return 
+}
+
+export default MyCarousel
