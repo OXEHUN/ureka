@@ -1,24 +1,3 @@
-package com.ssafy.eureka.domain.category.dto;
-
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-import jakarta.validation.constraints.NotNull;
-import lombok.Getter;
-import lombok.Setter;
-
-@Entity
-@Getter
-@Setter
-@Table(name = "small_category")
-public class SmallCategoryEntity {
-
-    @Id
-    private int smallCategoryId;
-
-    @NotNull
-    private String categoryName;
-
-    @NotNull
-    private int largeCategoryId;
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:500f0acd8b87e0c6c2f73f8c2780eb290da482563985d4b0d1a8b1b943c46e69
+size 776
