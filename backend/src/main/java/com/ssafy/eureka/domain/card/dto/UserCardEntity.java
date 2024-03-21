@@ -1,20 +1,3 @@
-package com.ssafy.eureka.domain.card.dto;
-
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-import lombok.Getter;
-import lombok.Setter;
-
-@Entity
-@Getter
-@Setter
-@Table(name = "user_card")
-public class UserCardEntity {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int userCardId;
-    
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:b2c4b65f4023ec2d6b72377a80becd14cd742491468467fd613ab762d6f937b9
+size 981
