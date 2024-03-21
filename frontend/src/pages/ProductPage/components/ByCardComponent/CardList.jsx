@@ -1,12 +1,3 @@
-import React from "react";
-import { StyleSheet, View, Text } from "react-native";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
-import { useNavigation } from "@react-navigation/native";
-
-function CardList() {
-  return <View></View>;
-}
-
-export default CardList;
-
-const styles = StyleSheet.create({});
+version https://git-lfs.github.com/spec/v1
+oid sha256:ac69477feea9382d50ca1437ed16ba1a8d584b1d50a4e168044d02d77035d924
+size 1674
