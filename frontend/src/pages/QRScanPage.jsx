@@ -1,19 +1,3 @@
-import { StyleSheet, Text, View } from "react-native"
-
-function QRScanPage() {
-  return (
-    <View style={styles.container}>
-      <Text>QR코드 스캔 페이지</Text>
-    </View>
-  )
-}
-
-export default QRScanPage
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  }
-})
+version https://git-lfs.github.com/spec/v1
+oid sha256:a4f5be8d6fe193b09198a5db14f393d42fc33d916f16c4b65f6a9bfc54943133
+size 12104
