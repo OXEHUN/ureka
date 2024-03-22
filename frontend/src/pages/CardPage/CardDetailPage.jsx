@@ -1,19 +1,3 @@
-import { StyleSheet, Text, View } from "react-native"
-
-function CardDetailPage() {
-  return (
-    <View style={styles.container}>
-      <Text>카드 단일 페이지</Text>
-    </View>
-  )
-}
-
-export default CardDetailPage
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  }
-})
+version https://git-lfs.github.com/spec/v1
+oid sha256:9ef572d782298f9cd9d6d4f5ef00f2cbbe52682764c2fd08f8ba049b78e3e662
+size 4839
