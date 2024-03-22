@@ -1,3 +1,22 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:638d02d941184253581f5f42ad1cc5353c938900e72b42809db92c09785bb5c1
-size 905
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import "./App.css";
+import RootLayout from "./pages/Root";
+import MainPage from "./pages/MainPage";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <RootLayout />,
+    children: [{ path: "/", element: <MainPage /> }],
+  },
+]);
+
+function App() {
+  return (
+    <>
+      <RouterProvider router={router} />
+    </>
+  );
+}
+
+export default App;
