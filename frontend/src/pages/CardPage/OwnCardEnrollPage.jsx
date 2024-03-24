@@ -1,19 +1,3 @@
-import { StyleSheet, Text, View } from "react-native"
-
-function OwnCardEnrollPage() {
-  return (
-    <View style={styles.container}>
-      <Text>보유 카드 추가 페이지</Text>
-    </View>
-  )
-}
-
-export default OwnCardEnrollPage
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  }
-})
+version https://git-lfs.github.com/spec/v1
+oid sha256:c531a734ab9cb812edc695c25409cb17a84db045355110f6cb443177aa018b36
+size 5010
