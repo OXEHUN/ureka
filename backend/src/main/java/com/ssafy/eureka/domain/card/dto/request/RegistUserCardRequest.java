@@ -1,3 +1,21 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:d1d3070fdfb40dc55516a05d02d78fbbeb0d3de6b2d6b8f281ba8e431a971f2f
-size 553
+package com.ssafy.eureka.domain.card.dto.request;
+
+import java.util.List;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+
+@Getter
+@NoArgsConstructor
+@AllArgsConstructor
+public class RegistUserCardRequest {
+    private List<RegistUserCard> registerUserCard;
+
+    @Getter
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class RegistUserCard{
+        private int cardId;
+        private String cardIdentifier;
+    }
+}

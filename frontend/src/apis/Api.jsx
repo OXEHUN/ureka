@@ -1,3 +1,14 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:9676aaf50bc8b1fab1d38602f478aebe5aec4f1ef87ee22a5a004333e63bcae0
-size 718
+import axios from "axios";
+
+const DOMAIN = "https://j10e101.p.ssafy.io"
+
+function API(token) {
+  return axios.create({
+    baseURL: DOMAIN + "/api",
+    headers: {
+      Authorization: token ? `Bearer ${token}` : '',
+    },
+  });
+}
+
+export default API
