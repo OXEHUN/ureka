@@ -1,3 +1,9 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:7d6c8b187bcb500327ea8b22ff69242ea65dcc5682cc51ef78e3efc3f3a6c733
-size 816
+server:
+  port: 8001
+  servlet:
+    context-path: /card
+
+spring:
+  profiles:
+    active: dev
+
