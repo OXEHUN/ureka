@@ -1,3 +1,18 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:6e42ddfe112b08d570dfeb88b67e1657b137bf67a3cf9f7c829a4ca906be864d
-size 550
+import { View, Text, Pressable } from "react-native"
+import { useNavigation } from "@react-navigation/native";
+import QRCodeScanner from "./QRCodeScanner";
+
+function QRScanPage () {
+  const navigation = useNavigation()
+
+  return (
+    <View style={{flex:1 , justifyContent: 'center', alignItems: 'center'}}>
+      <QRCodeScanner />
+      <Pressable onPress={() => navigation.navigate('HomePage')}>
+        <Text>뒤로 가기</Text>
+      </Pressable>
+    </View>
+  )
+}
+
+export default QRScanPage
