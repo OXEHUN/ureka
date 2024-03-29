@@ -1,14 +1,3 @@
-package com.ssafy.eureka.domain.payment.dto.request;
-
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
-public class PayRequest {
-    private String Store_Price_etc;
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:c8ca7c22b574d542bc0331273fbcd480bea31950355aff5636867cededaf3486
+size 1056
