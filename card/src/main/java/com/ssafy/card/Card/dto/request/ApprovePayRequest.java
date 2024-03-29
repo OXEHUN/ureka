@@ -1,28 +1,3 @@
-package com.ssafy.card.Card.dto.request;
-
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
-public class ApprovePayRequest {
-    private String cardIdentifier;
-
-    private String token;
-
-    private String storeName;
-
-    private String storeRegNo;
-
-    private int totalAmount;
-
-    private int totalInstallCnt;
-
-    private int largeCategoryId;
-
-    private Integer smallCategoryId;
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:92ff4bd8e3b6200cd4e41c2bbe92a8a345897f58351d24cd81fae2dfecd2888a
+size 531
