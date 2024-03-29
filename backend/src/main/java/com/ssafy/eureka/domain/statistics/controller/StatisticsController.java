@@ -1,9 +1,3 @@
-package com.ssafy.eureka.domain.statistics.controller;
-
-import io.swagger.v3.oas.annotations.tags.Tag;
-import lombok.extern.slf4j.Slf4j;
-
-@Slf4j
-@Tag(name = "통계 API", description = "소비내역, 할인내역 통계")
-public class StatisticsController {
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:3ee8a88274a52a46ac4d236f1d2a1388c068451f0958f95a1dcd7e6e9bbddfce
+size 1840

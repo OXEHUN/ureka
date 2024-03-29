@@ -1,16 +1,3 @@
-package com.ssafy.eureka.common.exception;
-
-import com.ssafy.eureka.common.response.ResponseCode;
-import lombok.Getter;
-
-@Getter
-public class CustomException extends RuntimeException{
-    private final int code;
-    private final String message;
-
-    public CustomException(ResponseCode responseHeader) {
-        super(responseHeader.getMessage());
-        this.code = responseHeader.getCode();
-        this.message = responseHeader.getMessage();
-    }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:c3f396c27c24195ad33d64b38544dfcfd9bedbe8b1374046f368f74907e71720
+size 602
