@@ -1,19 +1,3 @@
-import { createSlice } from "@reduxjs/toolkit";
-
-const initialState = {
-  value: null,
-};
-
-export const productSlice = createSlice({
-  name: "productList",
-  initialState,
-  reducers: {
-    selectCardId: (state, action) => {
-      state.value = action.payload;
-    },
-  },
-});
-
-export const { selectCardId } = productSlice.actions;
-
-export default productSlice.reducer;
+version https://git-lfs.github.com/spec/v1
+oid sha256:8d6eb3ff5d1282baa23b139c69c64b99285c415e871009309001907f66099adc
+size 1089
