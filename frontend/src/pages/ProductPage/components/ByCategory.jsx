@@ -1,12 +1,3 @@
-import React from "react";
-import { StyleSheet, ScrollView, View, Text, Pressable } from "react-native";
-
-function ByCategory() {
-  return (
-    <View>
-      <Text>카테고리별 추천</Text>
-    </View>
-  );
-}
-
-export default ByCategory;
+version https://git-lfs.github.com/spec/v1
+oid sha256:67f49787cc8091c805c3d2abb6a6bd75e70fe2bd4e87e81b38ac738d5bbb11ef
+size 703
