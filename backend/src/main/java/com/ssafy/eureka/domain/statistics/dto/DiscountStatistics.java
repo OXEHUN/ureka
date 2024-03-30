@@ -1,16 +1,3 @@
-package com.ssafy.eureka.domain.statistics.dto;
-
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
-public class DiscountStatistics {
-    private int categoryId;
-    private String categoryName;
-    private Long discount;
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:cd76d71b7a1f27db77cef0fb9480880ba06238ee18f5f94b85d5d60340119104
+size 563
