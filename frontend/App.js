@@ -1,17 +1,3 @@
-import { StatusBar } from 'expo-status-bar';
-import { NavigationContainer } from '@react-navigation/native';
-import { store } from './src/stores/store';
-import { Provider } from 'react-redux'
-import AuthRouters from './src/routers/AuthRouters'
-
-
-export default function App () {
-  return (
-    <Provider store={store}>
-      <NavigationContainer>
-        <StatusBar />
-        <AuthRouters />
-      </NavigationContainer>
-    </Provider>
-  );
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:1eff269aa7d9abda75a175db8e889fec44e248278ffbc8915c07315bce681c00
+size 641

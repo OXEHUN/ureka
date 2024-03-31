@@ -1,12 +1,3 @@
-package com.ssafy.eureka.domain.statistics.service;
-
-import com.ssafy.eureka.domain.statistics.dto.TotalStatistics;
-import com.ssafy.eureka.domain.statistics.dto.response.ConsumptionStatisticsResponse;
-
-public interface StatisticService {
-
-    TotalStatistics totalStatistics(String userId, String yyyyMM);
-    ConsumptionStatisticsResponse consumptionStatisticsResponse(String userId, String yyyyMM);
-
-
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:c2671ecc6256650972ddfb937ec7c881579069b83bfb46da17185f7c2de67969
+size 578
