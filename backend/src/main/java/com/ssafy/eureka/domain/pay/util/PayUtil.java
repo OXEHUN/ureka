@@ -1,21 +1,3 @@
-package com.ssafy.eureka.domain.pay.util;
-
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Component;
-
-@Component
-@RequiredArgsConstructor
-public class PayUtil {
-
-
-
-    // 결제 추천 함수
-    public int calculateDiscount() {
-
-
-
-
-        return 0;
-    }
-
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:a78b3e464c860cf93b819377aff95a97d42a8791bf91cb6962c8668b358a789b
+size 5893
