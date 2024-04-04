@@ -1,24 +1,3 @@
-import { createSlice } from "@reduxjs/toolkit";
-
-const initialState = {
-  twovalue: null,
-  value: null,
-};
-
-export const staticSlice = createSlice({
-  name: "staticList",
-  initialState,
-  reducers: {
-      top5Category:(state, action) => {
-        state.twovalue = action.payload;
-      },
-      benefitTop5Category:(state, action) => {
-        state.value = action.payload;
-      }
-  },
-});
-
-export const { top5Category ,benefitTop5Category } =
-staticSlice.actions;
-
-export default staticSlice.reducer;
+version https://git-lfs.github.com/spec/v1
+oid sha256:cccbaf9e9b362e3586c6ad697cfa079c3a569485e67d6a42fecd3471c9639a52
+size 596
