@@ -1,3 +1,30 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:862aed4bc260845b8e95c16b341f924d5d03c7f1ebd5a5c2b82f601a49ba0a4f
-size 852
+import { createSlice } from '@reduxjs/toolkit'
+
+const initialState = {
+  ownCardList: [],
+  payCardList: [],
+}
+
+export const cardSlice = createSlice({
+  name: 'cardList',
+  initialState,
+  reducers: {
+    addOwnCardList: (state, action) => {
+      state.ownCardList = [...state.ownCardList, action.payload]
+    },
+    deleteOwnCardList: (state, action) => {
+      state.ownCardList = state.ownCardList.filter(card => card.id !== action.payload)
+    },
+    addPayCardList: (state, action) => {
+      state.payCardList = [...state.payCardList, action.payload]
+    },
+    deletePayCardList: (state, action) => {
+      state.payCardList = state.payCardList.filter(card => card.id !== action.payload)
+    },
+  },
+})
+
+
+export const { addOwnCardList, deleteOwnCardList, addPayCardList, deletePayCardList } = cardSlice.actions
+
+export default cardSlice.reducer

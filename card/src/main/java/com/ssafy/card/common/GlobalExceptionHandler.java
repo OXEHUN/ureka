@@ -1,3 +1,20 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:5910ee798c835adc2ba2d8e1a91d4579cacb186f996ee58eeca53ccf6e3d3dee
-size 665
+package com.ssafy.card.common;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
+
+@RestControllerAdvice
+public class GlobalExceptionHandler {
+
+    @ExceptionHandler(Exception.class)
+    public ApiResponse<?> handleException(Exception e){
+        return new ApiResponse<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR.value(), null);
+    }
+
+    @ExceptionHandler(CustomException.class)
+    public ApiResponse<?> handleCustomException(CustomException e){
+        return new ApiResponse<>(e.getMessage(), e.getStatus(), null);
+    }
+
+}

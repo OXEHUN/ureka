@@ -1,3 +1,34 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:5c4b90e567d1ec2d91f70edc84f929e8db2d05bc39e3b27b01ca83fb957f04be
-size 1425
+package com.ssafy.eureka.domain.card.service;
+
+import com.ssafy.eureka.domain.card.dto.CardEntity;
+import com.ssafy.eureka.domain.card.dto.request.RegistPayCardRequest;
+import com.ssafy.eureka.domain.card.dto.request.RegistUserCardRequest;
+import com.ssafy.eureka.domain.card.dto.request.SearchUserCardRequest;
+import com.ssafy.eureka.domain.card.dto.response.*;
+import com.ssafy.eureka.domain.mydata.dto.response.MyDataCardHistoryResponse;
+
+import java.util.List;
+
+public interface UserCardService {
+
+    MyDataCardListResponse searchUserCard(String userId, SearchUserCardRequest searchUserCardRequest);
+
+    List<OwnUserCardResponse> ownUserCardList(String userId);
+    List<PayUserCardResponse> payUserCardList(String userId, String yyyymm);
+    CardInfoResponse userCardInfo(int userCardId);
+
+    MyDataCardHistoryResponse listCardHistory(String userId, int userCardId, String yyyymm);
+
+    void registUserCard(String userId, RegistUserCardRequest registUserCardRequest);
+
+    void registPayCard(String userId, RegistPayCardRequest registPayCardRequest);
+
+    void deleteUserCard(String userId, int userCardId);
+
+    CardProdRecommendResponse cardProdRecommend(String userId, int userCardId);
+
+    CardCompareResponse cardProdCompare(String userId, int userCardId);
+    CardRecommendTop3 cardRecommendTop3(String userId, int userCardId);
+
+    CardRecommendMainResponse cardRecommendMain(String userId, int userCardId);
+}

@@ -1,3 +1,17 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:9340aa5b55ef418aa92f91e862dd91cef8962ecc787cd3f2a03f4d65bdb7d2bd
-size 677
+package com.ssafy.card.Auth.service;
+
+import com.ssafy.card.Auth.dto.request.MyDataRequestDto;
+import com.ssafy.card.Auth.dto.request.PayRequestDto;
+import com.ssafy.card.Auth.dto.response.JwtTokenResponseDto;
+import com.ssafy.card.Auth.dto.response.PayTokenResponse;
+import jakarta.servlet.http.HttpServletRequest;
+import org.springframework.stereotype.Service;
+
+@Service
+public interface AuthService {
+    public JwtTokenResponseDto issueMyDataToken(MyDataRequestDto myDataRequestDto);
+    public PayTokenResponse issuePayToken(PayRequestDto dto);
+    public JwtTokenResponseDto reIssueToken(HttpServletRequest dto);
+
+    void checkUser(MyDataRequestDto myDataRequestDto);
+}

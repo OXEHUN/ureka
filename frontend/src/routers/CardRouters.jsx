@@ -1,3 +1,21 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:38443b271de488aa2c7615ae3c494b0115e3689790f833f4d9ed208e9fa3b4c2
-size 973
+import { createStackNavigator } from "@react-navigation/stack";
+import CardDetailPage from "../pages/CardPage/CardDetailPage";
+import CardDetailPayPage from "../pages/CardPage/CardDetailPayPage";
+import PayCardEnrollPage from "../pages/CardPage/PayCardEnrollPage";
+import OwnCardEnrollPage from "../pages/CardPage/OwnCardEnrollPage";
+import OwnCardPage from "../pages/CardPage/OwnCardPage";
+
+function CardRouters() {
+  const HomeStack = createStackNavigator();
+  return (
+    <HomeStack.Navigator screenOptions={{ headerShown: false }}>
+      <HomeStack.Screen name="CardHome" component={OwnCardPage} />
+      <HomeStack.Screen name="CardDetail" component={CardDetailPage} />
+      <HomeStack.Screen name="CardDetailPay" component={CardDetailPayPage} />
+      <HomeStack.Screen name="PayCardEnroll" component={PayCardEnrollPage} />
+      <HomeStack.Screen name="OwnCardEnroll" component={OwnCardEnrollPage} />
+    </HomeStack.Navigator>
+  );
+}
+
+export default CardRouters;

@@ -1,3 +1,24 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:6e62e7acbccdca5d9f8cac579dedee070ac9c718028e105c4389e1c9b257bcad
-size 515
+package com.ssafy.eureka.domain.card.dto.response;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.util.ArrayList;
+import java.util.List;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class CardProdListResponse {
+
+    private int cardId;
+    private String companyName;
+    private String cardName;
+    private String cardImagePath;
+    private int ImageAttr;
+    private String info;
+    private List<CardDetailBenefitList> list = new ArrayList<>();
+
+}
+

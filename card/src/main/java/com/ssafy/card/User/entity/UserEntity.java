@@ -1,3 +1,35 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:9316d82125626b809598e19aa7582510ef427ee2bde3b335120d1997ca7e2302
-size 886
+package com.ssafy.card.User.entity;
+
+import com.ssafy.card.Auth.dto.request.MyDataRequestDto;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
+import lombok.*;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import java.util.stream.Collectors;
+
+@Getter
+@Setter
+@Entity
+@NoArgsConstructor
+@Table(name = "user")
+public class UserEntity  {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    int userId;
+
+    @Column(length = 11, unique = true, nullable = false)
+    String phoneNumber;
+
+    @Column(length = 6, nullable = false)
+    String birth;
+
+    @Column(length = 30, nullable = false)
+    String name;
+}

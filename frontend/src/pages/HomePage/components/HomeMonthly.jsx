@@ -1,3 +1,152 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:62eeb8591d066bbce97cdb92efe01ccad1fb48bb242e7b26099a8eac1c3cb721
-size 4257
+import { StyleSheet, View, Text, Image, Pressable } from "react-native";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { useNavigation, useFocusEffect } from "@react-navigation/native";
+import TokenUtils from "../../../stores/TokenUtils";
+import React, { useState, useEffect, useCallback } from "react";
+import { getHomeInfo } from "../../../apis/HomeApi";
+
+function HomeMonthly() {
+  const navigation = useNavigation();
+  const [token, setToken] = useState("");
+  const currentDate = new Date();
+  const currentMonth = ("0" + (currentDate.getMonth() + 1)).slice(-2);
+  const currentYear = currentDate.getFullYear().toString();
+  const [warning, setWarning] = useState(false);
+  const [discount, setDiscount] = useState(0);
+  const [payAmount, setPayAmount] = useState(0);
+
+  useEffect(() => {
+    const fetchToken = async () => {
+      const accessToken = await TokenUtils.getAccessToken();
+      setToken(accessToken);
+    };
+
+    fetchToken();
+  }, []);
+
+  useFocusEffect(
+    useCallback(() => {
+      if (token) {
+        // 토큰이 있을 때만 getHomeInfo 호출
+        getHomeInfo(
+          token,
+          currentYear + currentMonth,
+          (res) => {
+            setWarning(false);
+            setDiscount(res.data.totalDiscount);
+            setPayAmount(res.data.totalConsumption);
+          },
+          (err) => {
+            if (err.response.status === 404) {
+              console.log(err.response.status);
+              setDiscount(0);
+              setPayAmount(0);
+              setWarning(true);
+            }
+          }
+        );
+      }
+    }, [token, currentMonth, currentYear])
+  );
+
+  return (
+    <View style={styles.container}>
+      <Pressable onPress={() => navigation.navigate("StatisticsPage")}>
+        <View style={styles.midheader}>
+          <View>
+            <Text style={styles.subtitle}>이번달 할인 & 소비</Text>
+            {warning && (
+              <Text style={{ color: "red", marginStart: 12 }}>
+                현재 등록된 카드가 없습니다.
+              </Text>
+            )}
+          </View>
+          <MaterialCommunityIcons
+            name="chevron-right"
+            size={26}
+            style={styles.nextBtn}
+          />
+        </View>
+        <View style={styles.midcontainer}>
+          <Image
+            style={styles.image}
+            source={require("../../../../assets/HomeIcon/Discount.png")}
+          />
+          <View>
+            <Text style={styles.font}>{"   "} 총 할인 금액</Text>
+            <Text style={styles.price}>{discount.toLocaleString()}원</Text>
+          </View>
+          <View></View>
+        </View>
+        <View style={styles.midcontainer}>
+          <Image
+            style={styles.image}
+            source={require("../../../../assets/HomeIcon/CoinWallet.png")}
+          />
+          <View>
+            <Text style={styles.font}>{"      "} 총 소비 금액</Text>
+            <Text style={styles.price}>{payAmount.toLocaleString()}원</Text>
+          </View>
+          <View></View>
+        </View>
+      </Pressable>
+    </View>
+  );
+}
+
+export default HomeMonthly;
+
+const styles = StyleSheet.create({
+  container: {
+    marginHorizontal: 20,
+    height: 280,
+    borderWidth: 2,
+    borderColor: "#D7D7D7",
+    borderRadius: 20,
+    padding: 12,
+    paddingTop: 20,
+    backgroundColor: "#ffffff",
+    // iOS Shadow Properties
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2 }, // Shadow direction: here it is set to be bottom-right
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    // Android Shadow Property
+    elevation: 5, // This adds a shadow for Android
+  },
+
+  subtitle: {
+    fontWeight: "bold",
+    fontSize: 20,
+    marginStart: 12,
+  },
+  midcontainer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    height: 80,
+    alignItems: "center",
+    padding: 20,
+    marginBottom: 12,
+  },
+  midheader: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    marginHorizontal: 12,
+    padding: 12,
+  },
+  image: {
+    width: 50,
+    height: 50,
+    marginEnd: 20,
+  },
+  font: {
+    fontSize: 16,
+  },
+  price: {
+    fontWeight: "bold",
+    fontSize: 24,
+    color: "#6797ff",
+    alignSelf: "flex-end",
+  },
+});

@@ -1,3 +1,20 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:13709821de83197568807646a7597542b26d3114ffed0cc1362d148e729b3b6b
-size 758
+package com.ssafy.eureka.config;
+
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
+public class WebConfig implements WebMvcConfigurer {
+
+    public static final String[] ALLOWED_ORIGIN = {"http://localhost:8000", "https://j10e101.p.ssafy.io"};
+    public static final String[] ALLOWED_METHOD = {"GET", "POST", "PUT", "DELETE"};
+
+    @Override
+    public void addCorsMappings(final CorsRegistry registry) {
+        registry.addMapping("/**")
+            .allowedOrigins(ALLOWED_ORIGIN)
+            .allowedMethods(ALLOWED_METHOD)
+            .allowedHeaders("Authorization", "Content-Type")
+            .allowCredentials(true)
+            .maxAge(600);
+    }
+}

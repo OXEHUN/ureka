@@ -1,3 +1,25 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:da343bcbeb5be5979a7824c8b5cae6b7c832bbd333c5fbef3b3213fff0a9d7a7
-size 1006
+package com.ssafy.eureka.domain.card.repository;
+
+
+import com.ssafy.eureka.domain.card.dto.CardBenefitEntity;
+import com.ssafy.eureka.domain.card.dto.CardEntity;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+
+import java.util.List;
+import java.util.Optional;
+
+public interface CardBenefitRepository extends JpaRepository<CardBenefitEntity, String> {
+
+    List<CardBenefitEntity> findByCardId(int cardId);
+    Optional<CardBenefitEntity> findTopByCardId(int cardBenefitId);
+
+    CardBenefitEntity findFirstByCardBenefitId(int cardBenefitId);
+    @Query("SELECT c FROM CardBenefitEntity c WHERE c.cardBenefitId = :cardBenefitId")
+    CardBenefitEntity findByCardBenefit(@Param("cardBenefitId") int cardBenefitId);
+
+    @Query("SELECT cb FROM CardBenefitEntity cb WHERE cb.cardId = :cardId")
+    List<CardBenefitEntity> findAllCardBenefitIdsByCardId(@Param("cardId") int cardId);
+
+}

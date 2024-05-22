@@ -1,3 +1,31 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:b9bda44c2ebea51f1b0e81f86c5a838d3f82acf54f15774b5d08ffb4a2ee3d1e
-size 639
+package com.ssafy.card.Card.entity;
+
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
+@Entity
+@Table(name = "card_company")
+public class CardCompanyEntity {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    int cardCompanyId;
+
+    @Column(length = 30, nullable = false)
+    String companyName;
+
+    @Column(length = 10, nullable = false)
+    String orgCode;
+
+    @Column(length = 3, nullable = false)
+    String cardBrand;
+
+    @Column(columnDefinition = "TEXT", nullable = false)
+    String imagePath;
+
+}

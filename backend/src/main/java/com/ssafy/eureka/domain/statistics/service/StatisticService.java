@@ -1,3 +1,32 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:a504c522b2084195975819bdaddfd6f5c26ca3ffa826b74712f7e6be986b70c0
-size 1109
+package com.ssafy.eureka.domain.statistics.service;
+
+import com.ssafy.eureka.domain.statistics.dto.TotalStatistics;
+import com.ssafy.eureka.domain.statistics.dto.response.*;
+
+public interface StatisticService {
+
+    TotalStatistics totalStatistics(String userId, String yyyyMM);
+
+    ConsumptionStatisticsResponse consumptionStatisticsResponse(String userId, String yyyyMM);
+
+    DiscountStatisticsResponse discountStatisticsResponse(String userId, String yyyyMM);
+
+    ConsumptionStatisticsResponse consumptionStatisticsByUserCardResponse(int userCardId, String yyyyMM);
+
+    DiscountStatisticsResponse discountStatisticsByUserCardResponse(int userCardId, String yyyyMM);
+
+    BestCardStatisticsResponse bestCardStatisticsResponse(String userId, String yyyyMM);
+
+    void updateCardOwnershipOverview();
+
+    void updateCardOwnershipStatic();
+
+    CardOwnershipResponse cardOwnershipOverviewResponse();
+
+    CardOwnershipResponse cardOwnershipStaticResponse(String userId, int userCardId);
+
+    void updateConsumptionUserStatic();
+
+    ConsumptionCompareResponse consumptionCompareResponse(String userId);
+}
+

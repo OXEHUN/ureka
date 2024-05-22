@@ -1,3 +1,58 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:f0edd4de9db15b7ae7d201b4afd31fe5cf559e098beeccc52ada11b6f5e478d8
-size 1901
+package com.ssafy.card.Card.dto.response;
+
+import com.ssafy.card.Card.entity.CardHistoryEntity;
+import java.time.LocalDateTime;
+import java.util.List;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Getter
+@NoArgsConstructor
+@AllArgsConstructor
+public class CardHistoryResponse {
+    private int monthTotalConsumption;
+
+    private int monthTotalDiscount;
+
+    List<MyDataCardHistory> myDataCardHistoryList;
+
+    @Getter
+    @Setter
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class MyDataCardHistory {
+        int cardHistoryId;
+        int userCardId;
+        int status;
+        int payType;
+        String approvedNum;
+        LocalDateTime approvedDateTime;
+        int approvedAmt;
+        LocalDateTime transDateTime;
+        Integer modifiedAmt;
+        String merchantName;
+        String merchantRegNo;
+        Integer totalInstallCnt;
+        int largeCategoryId;
+        Integer smallCategoryId;
+
+        public MyDataCardHistory(CardHistoryEntity history) {
+            this.cardHistoryId = history.getCardHistoryId();
+            this.userCardId = history.getUserCardId();
+            this.status = history.getStatus();
+            this.payType = history.getPayType();
+            this.approvedNum = history.getApprovedNum();
+            this.approvedDateTime = history.getApprovedDateTime();
+            this.approvedAmt = history.getApprovedAmt();
+            this.transDateTime = history.getTransDateTime();
+            this.modifiedAmt = history.getModifiedAmt();
+            this.merchantName = history.getMerchantName();
+            this.merchantRegNo = history.getMerchantRegNo();
+            this.totalInstallCnt = history.getTotalInstallCnt();
+            this.largeCategoryId = history.getLargeCategoryId();
+            this.smallCategoryId = history.getSmallCategoryId();
+        }
+    }
+}

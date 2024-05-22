@@ -1,3 +1,46 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:f91a8bb9d70fb2dc73c0f7bd0f0d0891eeb4a4188a4f158505f1d57b3ce39e99
-size 1795
+package com.ssafy.eureka.batch.job;
+
+import com.ssafy.eureka.domain.statistics.service.StatisticService;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.batch.core.Job;
+import org.springframework.batch.core.Step;
+import org.springframework.batch.core.job.builder.JobBuilder;
+import org.springframework.batch.core.repository.JobRepository;
+import org.springframework.batch.core.step.builder.StepBuilder;
+import org.springframework.batch.core.step.tasklet.Tasklet;
+import org.springframework.batch.repeat.RepeatStatus;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.transaction.PlatformTransactionManager;
+
+@Slf4j
+@Configuration
+@RequiredArgsConstructor
+public class ConsumptionUserJob {
+
+    private final StatisticService statisticService;
+
+    @Bean
+    public Job updateConsumptionUserJob(PlatformTransactionManager transactionManager, JobRepository jobRepository) {
+        return new JobBuilder("consumptionUserJob", jobRepository)
+                .start(updateConsumptionStaticStep(transactionManager, jobRepository))
+                .build();
+    }
+
+    @Bean
+    public Step updateConsumptionStaticStep(PlatformTransactionManager transactionManager, JobRepository jobRepository) {
+        return new StepBuilder("카테고리별 소비 통계 유저 합산", jobRepository)
+                .tasklet(consumptionTasklet(), transactionManager)
+                .build();
+    }
+
+    @Bean
+    public Tasklet consumptionTasklet() {
+        return (contribution, chunkContext) -> {
+            statisticService.updateConsumptionUserStatic();
+            log.info("consumptionUserStatic");
+            return RepeatStatus.FINISHED;
+        };
+    }
+}

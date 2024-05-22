@@ -1,3 +1,26 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:42541449a5f9efdbea9350e74065abd02b196522f1194143979b71cc3ad26009
-size 849
+package com.ssafy.card.config;
+
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
+@Configuration
+public class CorsConfig implements WebMvcConfigurer {
+
+    // Controller 단에서 cors 처리
+    private final static String[] ALLOWED_ORIGINS = {
+        "http://j10e101.p.ssafy.io",
+        "https://j10e101.p.ssafy.io",
+        "http://localhost:8000",
+        "https://j10e101.p.ssafy.io:8000",
+        "https://j10e101.p.ssafy.io:8000"};
+
+    @Override
+    public void addCorsMappings(CorsRegistry registry) {
+
+       // 모든 controller에서 port 3000에 대한 cors 처리 
+        registry.addMapping("/**")
+                .allowedOrigins(ALLOWED_ORIGINS)
+                ;
+    }
+}

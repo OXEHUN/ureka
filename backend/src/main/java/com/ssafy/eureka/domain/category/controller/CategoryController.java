@@ -1,3 +1,29 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:a45048373db365c89bddfc42a99c54158b43b50079f59beddb2f1096796d0d17
-size 1048
+package com.ssafy.eureka.domain.category.controller;
+
+import com.ssafy.eureka.domain.category.service.CategoryService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@Slf4j
+@Tag(name = "카테고리 관련 API", description = "혜텍 대분류 카테고리 조회")
+@RestController
+@RequiredArgsConstructor
+@RequestMapping("/api/category")
+public class CategoryController {
+
+    private final CategoryService categoryService;
+
+    @Operation(summary = "대분류 카테고리 조회")
+    @GetMapping("/list")
+    public ResponseEntity<?> listLargeCategory() {
+        log.debug("대분류 카테고리 조회");
+        return ResponseEntity.ok(categoryService.listLargeCategory());
+    }
+
+}

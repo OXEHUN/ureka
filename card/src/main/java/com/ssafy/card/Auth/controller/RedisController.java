@@ -1,3 +1,33 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:a2f0595e1e1de72facb99cb23ac2141c6a2b45d9156382c16527fa0119441349
-size 979
+package com.ssafy.card.Auth.controller;
+
+import lombok.RequiredArgsConstructor;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Map;
+
+@RestController
+@RequiredArgsConstructor
+public class RedisController {
+
+    private final RedisTemplate<String, String> redisTemplate;
+
+    @PostMapping
+    public ResponseEntity<String> setRedisData(
+            @RequestBody(required = true) Map<String, String> map) throws Exception {
+
+        redisTemplate.opsForValue().set(map.get("key"), map.get("value"));
+
+        return new ResponseEntity<>("정상 등록", HttpStatus.CREATED);
+
+    }
+
+    @GetMapping("/data")
+    public ResponseEntity<String> getRedisData(
+            @RequestParam(required = true) String key){
+
+        return new ResponseEntity<>(redisTemplate.opsForValue().get(key), HttpStatus.OK);
+    }
+}

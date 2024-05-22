@@ -1,3 +1,21 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:e8ffbc00c2ab4b3b851bfc50f33d8f7df37b8a31a5bf7063ddbebbf09497f1b8
-size 835
+package com.ssafy.card.Card.service;
+
+
+import com.ssafy.card.Card.dto.request.ApprovePayRequest;
+import com.ssafy.card.Card.dto.response.ApprovePayResponse;
+import com.ssafy.card.Card.dto.response.CardHistoryResponse;
+import com.ssafy.card.Card.entity.CardEntity;
+import com.ssafy.card.Card.entity.CardHistoryEntity;
+import com.ssafy.card.User.dto.response.UserCardResponse;
+import com.ssafy.card.User.entity.UserCardEntity;
+import com.ssafy.card.common.ApiResponse;
+import org.springframework.security.core.userdetails.UserDetails;
+
+import java.util.List;
+
+public interface CardService {
+
+    public List<UserCardResponse> cardList(UserDetails userDetails);
+    public CardHistoryResponse cardHistory(String phoneNumber, String cardIdentifier, String yyyymm);
+    ApprovePayResponse approvePay(ApprovePayRequest approvePayRequest);
+}

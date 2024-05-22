@@ -1,3 +1,32 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:839d3b2122cbe7d2edfaf8954ca4453472d04496e629d4c2071ba403e20b9fc1
-size 728
+import React from "react";
+import { StyleSheet, View, Text, Pressable } from "react-native";
+import CategoryCardList from "./ByCategoryComponent/CategoryCardList";
+import CategoryChooseOne from "./ByCategoryComponent/CategoryChooseOne";
+function ByCategory() {
+  return (
+    <View style={styles.container}>
+      <View style={styles.chooseOne}>
+        <CategoryChooseOne />
+      </View>
+      <View style={styles.cardList}>
+        <CategoryCardList />
+      </View>
+    </View>
+  );
+}
+
+export default ByCategory;
+
+const styles = StyleSheet.create({
+  container: {},
+  nextBtn: {
+    start: "end",
+    color: "#cacaca",
+    marginTop: 50,
+    marginLeft: 5,
+  },
+  chooseOne: {},
+  cardList: {
+    marginBottom: 50,
+  },
+});

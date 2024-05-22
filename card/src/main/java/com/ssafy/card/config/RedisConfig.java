@@ -1,3 +1,36 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:b7c6dc4a78213875f30579240fee610c15d5f693adce15251d0f4aa39d772b21
-size 1192
+package com.ssafy.card.config;
+
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.data.redis.connection.RedisConnectionFactory;
+import org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.serializer.StringRedisSerializer;
+
+@Configuration
+public class RedisConfig {
+
+    @Value("${spring.data.redis.port}")
+    private int port;
+
+    @Value("${spring.data.redis.host")
+    private String host;
+
+    @Bean
+    public RedisConnectionFactory redisConnectionFactory(){
+        return new LettuceConnectionFactory(host, port);
+    }
+
+    @Bean
+    public RedisTemplate<String, String> redisTemplate(){
+
+        RedisTemplate<String, String> redisTemplate = new RedisTemplate<>();
+
+        redisTemplate.setKeySerializer(new StringRedisSerializer());
+        redisTemplate.setValueSerializer(new StringRedisSerializer());
+        redisTemplate.setConnectionFactory(redisConnectionFactory());
+
+        return redisTemplate;
+    }
+}

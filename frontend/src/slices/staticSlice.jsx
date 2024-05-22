@@ -1,3 +1,28 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:7150160b3f374a650b2109aba521423d1ce11f6f2d877534cb4b464bd2379c75
-size 592
+import { createSlice } from "@reduxjs/toolkit";
+
+const initialState = {
+  twovalue: [],
+  value: [],
+  list: [],
+};
+
+export const staticSlice = createSlice({
+  name: "staticList",
+  initialState,
+  reducers: {
+    top5Category: (state, action) => {
+      state.twovalue = action.payload;
+    },
+    benefitTop5Category: (state, action) => {
+      state.value = action.payload;
+    },
+    tagList: (state, action) => {
+      state.list = action.payload;
+    },
+  },
+});
+
+export const { top5Category, benefitTop5Category, tagList } =
+  staticSlice.actions;
+
+export default staticSlice.reducer;

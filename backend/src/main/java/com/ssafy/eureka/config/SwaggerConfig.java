@@ -1,3 +1,35 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:3890cf4ff9896026ca58fbb004c2d758e01a3dc3506460de83ddcc13e02f3bcc
-size 1024
+package com.ssafy.eureka.config;
+
+import io.swagger.v3.oas.annotations.enums.SecuritySchemeType;
+import io.swagger.v3.oas.annotations.security.SecurityScheme;
+import io.swagger.v3.oas.models.Components;
+import io.swagger.v3.oas.models.OpenAPI;
+import io.swagger.v3.oas.models.info.Info;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import io.swagger.v3.oas.models.security.SecurityRequirement;
+
+@SecurityScheme(
+    name = "JWT Auth",
+    type = SecuritySchemeType.HTTP,
+    bearerFormat = "JWT",
+    scheme = "bearer"
+)@Configuration
+public class SwaggerConfig {
+
+
+    @Bean
+    public OpenAPI openAPI() {
+        return new OpenAPI()
+            .components(new Components())
+            .addSecurityItem(new SecurityRequirement().addList("JWT Auth"))
+            .info(apiInfo());
+    }
+
+    private Info apiInfo() {
+        return new Info()
+            .title("Springdoc")
+            .description("Swagger UI")
+            .version("1.0.0");
+    }
+}

@@ -1,3 +1,21 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:1c4ee321a848e6ae49f7f286bb5a87539bc1ec757586b713b6ce9650d1b2474a
-size 690
+package com.ssafy.eureka.domain.tag.service;
+
+import com.ssafy.eureka.domain.tag.dto.TagEntity;
+import com.ssafy.eureka.domain.tag.dto.response.TagListResponse;
+import com.ssafy.eureka.domain.tag.repository.UserTagRepository;
+import java.util.List;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
+
+@Service
+@RequiredArgsConstructor
+public class TagServiceImpl implements TagService{
+
+    private final UserTagRepository userTagRepository;
+
+    @Override
+    public TagListResponse searchList(String userId) {
+        List<TagEntity> list = userTagRepository.findTagsByUserId(Integer.parseInt(userId));
+        return new TagListResponse(list);
+    }
+}

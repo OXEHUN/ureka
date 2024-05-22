@@ -1,3 +1,15 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:ebe2a881267a50f075dfc9ae94e140558561294431865e5733ce3a613ad6f1cb
-size 581
+package com.ssafy.eureka.domain.pay.service;
+
+
+import com.ssafy.eureka.domain.pay.dto.request.AprrovePayRequest;
+import com.ssafy.eureka.domain.pay.dto.request.RequestPayRequest;
+import com.ssafy.eureka.domain.pay.dto.response.CardRecommendResponse;
+import com.ssafy.eureka.domain.pay.dto.response.PayHistoryResponse;
+
+public interface PayService {
+    CardRecommendResponse requestPay(String userId, RequestPayRequest requestPayRequest);
+
+    void approvePay(String userId, AprrovePayRequest aprrovePayRequest);
+
+    PayHistoryResponse payHistory(String userId, String yyyymm);
+}

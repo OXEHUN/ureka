@@ -1,3 +1,102 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:9c2ea4dfc43a324746124c46fe02f8e1d6f49e1a3b87d729a9ff78f15ee3ce27
-size 2507
+import { useEffect, useState } from "react";
+import { StyleSheet, View, Text, Dimensions, Platform } from "react-native";
+import TokenUtils from "../../../stores/TokenUtils";
+import { getMyTotalBenefitAmount } from "../../../apis/StatisticsApi";
+
+const SCREEN_WIDTH = Dimensions.get("window").width;
+
+function BenefitAmountOfYou() {
+  const [benefitAmount, setBenefitAmount] = useState("");
+  const [token, setToken] = useState("");
+
+  useEffect(() => {
+    const fetchToken = async () => {
+      const accessToken = await TokenUtils.getAccessToken();
+      setToken(accessToken);
+    };
+
+    fetchToken();
+  }, []);
+
+  useEffect(() => {
+    if (token) {
+      const getCurrentDate = () => {
+        const date = new Date();
+        const year = date.getFullYear();
+        const month = date.getMonth() + 1;
+        return year * 100 + month;
+      };
+      const currentDate = getCurrentDate();
+
+      getMyTotalBenefitAmount(
+        token,
+        currentDate,
+        (res) => {
+          setBenefitAmount(res.data.totalDiscount);
+        },
+        (err) => {
+          console.log(err, "BenefitAmountOfyou, 혜택금액불러오기 실패");
+        }
+      );
+    }
+  }, [token]);
+
+  const formatBenefitAmount = benefitAmount.toLocaleString("ko-KR");
+  return (
+    <View>
+      <View style={styles.container}>
+        <Text style={styles.benefitText}>이번달 혜택 금액은</Text>
+        <View style={styles.amountContainer}>
+          <Text style={styles.amountText}>{formatBenefitAmount}</Text>
+          <Text style={styles.won}>원</Text>
+        </View>
+        <Text style={styles.benefitText}>이에요!</Text>
+      </View>
+    </View>
+  );
+}
+
+export default BenefitAmountOfYou;
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#4D85FF",
+    width: SCREEN_WIDTH - 40,
+    justifyContent: "center",
+    alignItems: "center",
+    borderRadius: 20,
+    ...Platform.select({
+      ios: {
+        shadowColor: "#000",
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
+      },
+      android: {
+        elevation: 5,
+      },
+    }),
+  },
+  benefitText: {
+    fontSize: 25,
+    fontWeight: "600",
+    color: "white",
+  },
+  amountContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  amountText: {
+    fontSize: 50,
+    fontWeight: "700",
+    color: "white",
+  },
+  won: {
+    fontSize: 23,
+    fontWeight: "400",
+    color: "white",
+    marginTop: 10,
+    marginLeft: 10,
+  },
+});

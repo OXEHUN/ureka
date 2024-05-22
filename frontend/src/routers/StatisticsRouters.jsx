@@ -1,3 +1,21 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:835e1eb0469afd9cc444f82c2f3a75e054635ca9ccc346eca000898dbb7af3b3
-size 756
+import { createStackNavigator } from "@react-navigation/stack";
+import MyAkaList from "../pages/StatisticsPage/components/MyAkaList";
+import AkaOfYou from "../pages/StatisticsPage/components/AkaOfYou";
+import StatisticsPage from "../pages/StatisticsPage/StatisticsPage";
+
+const StatisticsStack = createStackNavigator();
+
+function StatisticsRouters() {
+  return (
+    <StatisticsStack.Navigator screenOptions={{ headerShown: false }}>
+      <StatisticsStack.Screen
+        name="StatisticsPage1"
+        component={StatisticsPage}
+      />
+      <StatisticsStack.Screen name="AkaOfYou" component={AkaOfYou} />
+      <StatisticsStack.Screen name="MyAkaList" component={MyAkaList} />
+    </StatisticsStack.Navigator>
+  );
+}
+
+export default StatisticsRouters;

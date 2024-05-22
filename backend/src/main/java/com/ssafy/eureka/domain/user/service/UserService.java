@@ -1,3 +1,30 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:3ed9c136b9a438e5b441c79d9beaae95aff5e6bdc21c5a6dcbb9bd26bfb20925
-size 1167
+package com.ssafy.eureka.domain.user.service;
+
+import com.ssafy.eureka.domain.user.dto.request.CheckUserRequest;
+import com.ssafy.eureka.domain.user.dto.request.LoginRequest;
+import com.ssafy.eureka.domain.user.dto.request.SendMessageRequest;
+import com.ssafy.eureka.domain.user.dto.request.SignUpRequest;
+import com.ssafy.eureka.domain.user.dto.response.CheckUserRespnose;
+import com.ssafy.eureka.domain.user.dto.response.JwtTokenResponse;
+import com.ssafy.eureka.domain.user.dto.response.UserDataTokenResponse;
+import jakarta.servlet.http.HttpServletRequest;
+import org.springframework.security.core.userdetails.UserDetails;
+
+public interface UserService {
+
+    UserDataTokenResponse checkUser(CheckUserRequest checkUserRequest);
+
+    UserDataTokenResponse signUp(SignUpRequest signUpRequest);
+
+    UserDataTokenResponse login(LoginRequest loginRequest);
+
+    void updatePassword(UserDetails userDetails, String password);
+
+    void checkPassword(UserDetails userDetails, String password);
+
+    void sendMessage(SendMessageRequest sendMessageRequest);
+
+    JwtTokenResponse reissueToken(HttpServletRequest request);
+
+    void resignUser(UserDetails userDetails);
+}

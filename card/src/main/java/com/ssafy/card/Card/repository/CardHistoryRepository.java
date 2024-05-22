@@ -1,3 +1,19 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:7a208c9d012df4a2551898ad790719bc5875cb6803d42e5b53a9c08b0426fa6e
-size 787
+package com.ssafy.card.Card.repository;
+
+import com.ssafy.card.Card.entity.CardHistoryEntity;
+import java.util.List;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+
+public interface CardHistoryRepository extends JpaRepository<CardHistoryEntity, String> {
+
+    @Query(value =
+          "SELECT * "
+        + "FROM card_history c "
+        + "WHERE c.user_card_id = :userCardId "
+        + "AND YEAR(c.approved_date_time) = :year "
+        + "AND MONTH(c.approved_date_time) = :month", nativeQuery = true)
+    List<CardHistoryEntity> findByUserCardIdAndMonthAndYear(@Param("userCardId") int userCardId, @Param("year") String year, @Param("month") String month);
+
+}

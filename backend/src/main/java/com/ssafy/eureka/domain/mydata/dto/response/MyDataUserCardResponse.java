@@ -1,3 +1,24 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:f9071f632fe247f069a4b176ff0eadef920961b44492562657a77fa0e672f836
-size 568
+package com.ssafy.eureka.domain.mydata.dto.response;
+
+import java.util.List;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Getter
+@NoArgsConstructor
+@AllArgsConstructor
+public class MyDataUserCardResponse {
+    List<MyDataUserCard> userCardList;
+
+    @Getter
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class MyDataUserCard {
+        private int cardId;
+        private String cardIdentifier;
+        private String firstCardNumber;
+        private String lastCardNumber;
+    }
+}

@@ -1,3 +1,16 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:d1d8cd2976d9ef470c1be219bf3ffa66ed97203bd2d677d0cc0e7a76eba8823a
-size 663
+package com.ssafy.eureka.domain.auth.jwt;
+
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import org.springframework.security.access.AccessDeniedException;
+import org.springframework.security.web.access.AccessDeniedHandler;
+
+public class CustomAccessDeniedHandler implements AccessDeniedHandler {
+
+    @Override
+    public void handle(HttpServletRequest request, HttpServletResponse response,
+        AccessDeniedException accessDeniedException) throws IOException {
+        response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, accessDeniedException.getMessage());
+    }
+}

@@ -1,3 +1,36 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:7f42181a776852e4da0013d691577c1b58c73a74c66e3db1c37f88edfe8a58b2
-size 953
+package com.ssafy.eureka.domain.statistics.entity;
+
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
+import lombok.Getter;
+import lombok.Setter;
+
+import java.time.LocalDate;
+
+@Entity
+@Getter
+@Setter
+@Table(name = "card_ownership_overview")
+public class CardOwnershipOverviewEntity {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int overviewId;
+
+    @NotNull
+    private int cardId;
+
+    @NotNull
+    private int ownershipCount;
+
+    @NotNull
+    private LocalDate createdDate;
+
+    public static CardOwnershipOverviewEntity registerOverview(int cardId, int ownershipCount) {
+        CardOwnershipOverviewEntity cardOwnershipOverview = new CardOwnershipOverviewEntity();
+        cardOwnershipOverview.setCardId(cardId);
+        cardOwnershipOverview.setOwnershipCount(ownershipCount);
+        cardOwnershipOverview.setCreatedDate(LocalDate.now());
+        return cardOwnershipOverview;
+    }
+}

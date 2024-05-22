@@ -1,3 +1,21 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:b9d1fe385c1070441d091ac86be4070d3a5aed08420c633a03e849f05171eaeb
-size 736
+import { createStackNavigator } from "@react-navigation/stack";
+import HomePage from "../pages/HomePage/HomePage";
+import OnlyPay from "../pages/HomePage/OnlyPay";
+import Compare from "../pages/HomePage/Compare";
+import SettingPage from "../pages/SettingPage/SettingPage";
+
+
+function HomeRouters () {
+  const HomeStack = createStackNavigator()
+  return (
+    <HomeStack.Navigator
+      screenOptions={{ headerShown: false }}>
+      <HomeStack.Screen name="Home" component={HomePage}/>
+      <HomeStack.Screen name="OnlyPay" component={OnlyPay}/>
+      <HomeStack.Screen name="Compare" component={Compare}/>
+      <HomeStack.Screen name="SettingPage" component={SettingPage}/>
+    </HomeStack.Navigator>
+  )
+}
+
+export default HomeRouters

@@ -1,3 +1,12 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:3e2bb3e21bdfaa2f662b34996e85aa65af7060f3d436ab4263775220632505bf
-size 551
+package com.ssafy.eureka.domain.statistics.repository;
+
+import com.ssafy.eureka.domain.statistics.entity.ConsumptionSmallStaticEntity;
+import java.util.Optional;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface ConsumptionSmallStaticRepository extends JpaRepository<ConsumptionSmallStaticEntity, Integer> {
+
+    Optional<ConsumptionSmallStaticEntity> findByConsumptionLargeStaticIdAndSmallCategoryId(int consumptionLargeStaticId, Integer smallCategoryId);
+}

@@ -1,3 +1,34 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:7c421e17bdf50d5d8b3577832294bdcb716b6d4ad87392cf1948676871dd568d
-size 1540
+package com.ssafy.eureka.domain.mydata.feign;
+
+import com.ssafy.eureka.common.response.MyDataApiResponse;
+import com.ssafy.eureka.domain.mydata.dto.request.MyDataCardHistoryRequest;
+import com.ssafy.eureka.domain.mydata.dto.request.MyDataTokenRequest;
+import com.ssafy.eureka.domain.mydata.dto.response.MyDataCardHistoryResponse;
+import com.ssafy.eureka.domain.mydata.dto.response.MyDataTokenResponse;
+import com.ssafy.eureka.domain.mydata.dto.response.MyDataUserCardResponse;
+import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@FeignClient(name="myDataFeign", url="${feign.client.baseurl.myDataFeign}")
+public interface MyDataFeign {
+    @PostMapping(path = "/auth/check")
+    public MyDataApiResponse<?> cechkUser(
+        @RequestBody MyDataTokenRequest myDataTokenRequest);
+
+    @PostMapping(path = "/auth/mydata")
+    public MyDataApiResponse<MyDataTokenResponse> requestToken(
+        @RequestBody MyDataTokenRequest myDataTokenRequest);
+
+    @PostMapping(path = "/user/list")
+    public MyDataApiResponse<MyDataUserCardResponse> searchUserCard(
+        @RequestHeader("Authorization") String accessToken,
+        @RequestParam("cardCompanyId") int cardCompanyId);
+
+    @GetMapping(path = "/card/history")
+    public MyDataApiResponse<MyDataCardHistoryResponse> searchCardPayList(
+        @RequestHeader("Authorization") String accessToken,
+        @RequestParam("cardIdentifier") String cardIdentifier,
+        @RequestParam("yyyymm") String yyyymm);
+}

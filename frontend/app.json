@@ -1,3 +1,40 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:47b4e86f7e01e202e17d31ef35af38a9d620cbe5cfc1b007b4a7654d80b5b22e
-size 853
+{
+  "expo": {
+    "name": "유레카",
+    "slug": "eureka",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/eureka-icon.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/eureka-icon.png",
+        "backgroundColor": "#ffffff"
+      },
+      "package": "com.ssafy.eureka"
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "5e56431c-5a30-4354-9423-d1ba02e08b7b"
+      }
+    },
+    "owner": "iniyap",
+    "plugins": [
+      "react-native-vision-camera"
+    ]
+  }
+}

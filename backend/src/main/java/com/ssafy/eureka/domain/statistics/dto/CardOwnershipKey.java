@@ -1,3 +1,34 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:952ec57c53f9f0e8125142d7f750edea3d64d535bcf536cb2711673b8e648521
-size 848
+package com.ssafy.eureka.domain.statistics.dto;
+
+import lombok.Getter;
+import lombok.Setter;
+
+import java.util.Objects;
+
+@Getter
+@Setter
+public class CardOwnershipKey {
+    private int cardId;
+    private char ageGroup;
+    private char gender;
+
+    public CardOwnershipKey(int cardId, char ageGroup, char gender) {
+        this.cardId = cardId;
+        this.ageGroup = ageGroup;
+        this.gender = gender;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof CardOwnershipKey that)) return false;
+        return Objects.equals(cardId, that.cardId) &&
+                Objects.equals(ageGroup, that.ageGroup) &&
+                Objects.equals(gender, that.gender);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(cardId, ageGroup, gender);
+    }
+}

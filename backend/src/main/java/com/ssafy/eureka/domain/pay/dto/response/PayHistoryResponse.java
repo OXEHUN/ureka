@@ -1,3 +1,24 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:1adca65dcdf6ca42201f9bb42449ba3393d4ea4a03dc51d84116dc3f54c21e7d
-size 605
+package com.ssafy.eureka.domain.pay.dto.response;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.validation.constraints.NotNull;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import java.time.LocalDateTime;
+import java.util.List;
+
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+public class PayHistoryResponse {
+    private int totalAmt;
+    private int totalDiscount;
+    List<PayHistoryListResponse> list;
+}

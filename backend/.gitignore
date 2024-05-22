@@ -1,3 +1,44 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:e1fca19665bf960d7612c18990ea376e42f4a04b57bfcb41dc2bef892a8a7d95
-size 531
+HELP.md
+.gradle
+build/
+!gradle/wrapper/gradle-wrapper.jar
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+bin/
+!**/src/main/**/bin/
+!**/src/test/**/bin/
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+out/
+!**/src/main/**/out/
+!**/src/test/**/out/
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+### VS Code ###
+.vscode/
+
+### Gerrit ###
+push_to_gerrit.sh
+
+
+### yml ###
+src/main/resources/application-prod.yml

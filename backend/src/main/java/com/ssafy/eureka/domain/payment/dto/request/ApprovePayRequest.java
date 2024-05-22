@@ -1,3 +1,43 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:dcad8f48d4b6e9924a5eb29050c263480a7ff257f0c3efbae4f538697b61d7e6
-size 1070
+package com.ssafy.eureka.domain.payment.dto.request;
+
+import com.ssafy.eureka.domain.pay.dto.PayInfo;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+public class ApprovePayRequest {
+    private String cardIdentifier;
+
+    private String token;
+
+    private String storeName;
+
+    private String storeRegNo;
+
+    private int totalAmount;
+
+    private int totalInstallCnt;
+
+    private int largeCategoryId;
+
+    private Integer smallCategoryId;
+
+    public ApprovePayRequest(String cardIdentifier, String token, PayInfo payInfo) {
+        this.cardIdentifier = cardIdentifier;
+        this.token = token;
+
+        this.storeName = payInfo.getStoreName();
+        this.storeRegNo = payInfo.getStoreRegNo();
+
+        this.totalAmount = payInfo.getTotalAmount();
+        this.totalInstallCnt = payInfo.getTotalInstallCnt();
+
+        this.largeCategoryId = payInfo.getLargeCategoryId();
+        this.smallCategoryId = payInfo.getSmallCategoryId();
+    }
+}

@@ -1,3 +1,39 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:56d44267a6e3aa0b6344d15e52b65d7d03b50c6b83af1d760001943793fe5696
-size 725
+package com.ssafy.eureka.domain.payment.dto.response;
+
+import java.time.LocalDateTime;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+public class PayResponse {
+    private int userCardId;
+
+    private int status;
+
+    private int payType;
+
+    private String approvedNum;
+
+    private LocalDateTime approvedDateTime;
+
+    private int approvedAmt;
+
+    private LocalDateTime transDateTime;
+
+    private Integer modifiedAmt;
+
+    private String merchantName;
+
+    private String merchantRegNo;
+
+    private Integer totalInstallCnt;
+
+    private int largeCategoryId;
+
+    private Integer smallCategoryId;
+}

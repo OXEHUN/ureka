@@ -1,3 +1,38 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:8d4b0500235491eebd7c36f241d64b6b01ec1143a52a0d23dea5c9cc43106e64
-size 908
+package com.ssafy.eureka.domain.card.dto.response;
+
+import java.io.Serializable;
+import java.util.List;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+public class MyDataCardListResponse implements Serializable {
+    private List<MyDataCard> cardList;
+
+    @Getter
+    @Setter
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class MyDataCard {
+        private int cardCompanyId;
+        private String companyName;
+        private List<Card> list;
+
+        @Getter
+        @Setter
+        @NoArgsConstructor
+        @AllArgsConstructor
+        public static class Card{
+            private int cardId;
+            private String cardIdentifier;
+            private String cardName;
+            private String imagePath;
+            private int imgAttr;
+        }
+    }
+}

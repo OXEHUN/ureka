@@ -1,3 +1,19 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:34ce20b9182fa73f559f17d0172f5351bbb90c53f13f9d1b5ad6b5d46a43bd03
-size 551
+import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs'
+import PayCardPage from './PayCardPage'
+import OwnCardPage2 from './OwnCardPage2'
+
+function CardHome () {
+  const Tab = createMaterialTopTabNavigator()
+  return (
+    <Tab.Navigator
+      screenOptions={{
+        tabBarLabelStyle: { fontSize: 16, fontWeight: 'bold' }
+      }}
+    >
+      <Tab.Screen name="보유 카드" component={OwnCardPage2} />
+      <Tab.Screen name="결제 카드" component={PayCardPage} />
+    </Tab.Navigator>
+  )
+}
+
+export default CardHome

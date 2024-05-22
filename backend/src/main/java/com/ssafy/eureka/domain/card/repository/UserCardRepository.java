@@ -1,3 +1,28 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:81e3a09d6f8bdb7a252135120b1ac2c78bdf85f0e950fb3ea8c036d6c20504fe
-size 1202
+package com.ssafy.eureka.domain.card.repository;
+
+import com.ssafy.eureka.domain.card.dto.UserCardEntity;
+import java.util.List;
+import java.util.Optional;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+
+public interface UserCardRepository extends JpaRepository<UserCardEntity, String> {
+    List<UserCardEntity> findAllByUserId(int userId);
+
+    Optional<UserCardEntity> findByUserCardId(int userCardId);
+    List<UserCardEntity> findAllByUserIdAndIsPaymentEnabledTrue(int userId);
+
+    Optional<UserCardEntity> findByCardIdentifier(String cardIdentifier);
+
+    boolean existsByUserId(int userId);
+    boolean existsByUserCardId(int userCardId);
+
+    @Query("SELECT uc.cardId, COUNT(uc) FROM UserCardEntity uc GROUP BY uc.cardId")
+    List<Object[]> countTotalCardOwnership();
+    @Query("SELECT u.cardId FROM UserCardEntity u WHERE u.userId = :userId")
+    List<Integer> findCardIdByUserId(@Param("userId") int userId);
+
+    @Query("SELECT u.userCardId FROM UserCardEntity u WHERE u.userId = :userId")
+    List<Integer> findUserCardIdByUserId(@Param("userId") int userId);
+}

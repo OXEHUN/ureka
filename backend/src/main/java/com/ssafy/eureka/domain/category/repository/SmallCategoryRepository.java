@@ -1,3 +1,13 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:5681ab06cc37ee3a0a0d0a39a0cb3d876a548bbae53b3dee1c97a1a72021e08b
-size 564
+package com.ssafy.eureka.domain.category.repository;
+
+import com.ssafy.eureka.domain.category.dto.SmallCategoryEntity;
+import java.util.Optional;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+
+public interface SmallCategoryRepository extends JpaRepository<SmallCategoryEntity, String> {
+    Optional<SmallCategoryEntity> findByCategoryName(String categoryName);
+    Optional<SmallCategoryEntity> findBySmallCategoryId(int categoryId);
+
+}

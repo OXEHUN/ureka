@@ -1,3 +1,20 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:220f640629f3c1089d95ab65ab4ca174beaf4c5d068bb4c202c09ab3788b8a4e
-size 783
+package com.ssafy.eureka.domain.card.service;
+
+import com.ssafy.eureka.domain.card.dto.CardBenefitEntity;
+import com.ssafy.eureka.domain.card.dto.CardEntity;
+import com.ssafy.eureka.domain.card.dto.response.CardCompanyListResponse;
+import com.ssafy.eureka.domain.card.dto.response.CardProdDetailResponse;
+import com.ssafy.eureka.domain.card.dto.response.CardProdListResponse;
+import com.ssafy.eureka.domain.card.dto.response.CardProdRecommendResponse;
+
+import java.util.List;
+
+public interface CardService {
+
+    void registAllCardProduct();
+    CardCompanyListResponse listCardCompany();
+    List<CardProdListResponse> cardProdCompanyList(int companyId);
+    List<CardProdListResponse> cardProdCategoryList(int categoryId);
+    CardProdDetailResponse cardProdDetail(int cardId);
+
+}
